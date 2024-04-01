@@ -5,13 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "task-1": "nodemon src/task-1/index.js",
-    "task-2": "nodemon src/task-2/index.js",
-    "task-3-1": "nodemon src/task-3/tasks/task-3-1.mjs",
-    "task-3-2": "nodemon src/task-3/tasks/task-3-2.mjs",
-    "task-3-3": "nodemon src/task-3/CSVConverter.js",
-    "start": "pm2 start src/task-5/server.mjs --name ngmp-network-app --no-daemon",
-    "stop": "pm2 stop ngmp-network-app"
+    "build": "tsc",
+    "start": "npm run build && pm2 start dist/server.js --name online-shop --no-daemon",
+    "stop": "pm2 stop online-shop",
+    "start-api": "nodemon src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -24,11 +21,17 @@
   },
   "homepage": "https://github.com/AnatolyKim/nodejs-2024-q1#readme",
   "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/uuid": "^9.0.8",
     "nodemon": "^3.1.0",
-    "pm2": "^5.3.1"
+    "pm2": "^5.3.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
   },
   "dependencies": {
     "csvtojson": "^2.0.10",
+    "express": "^4.19.2",
+    "joi": "^17.12.2",
     "uuid": "^9.0.1"
   }
 }
